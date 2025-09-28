@@ -1,0 +1,8 @@
+@import '@/styles/theme.scss';
+
+.button {
+  background-color: $primary-color;
+  color: $secondary-color;
+  padding: 10px 15px 10px;
+  margin: 20px;
+}
