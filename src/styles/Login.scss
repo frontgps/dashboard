@@ -42,12 +42,6 @@
     min-height: 95px;
   }
   
-  .ant-input::placeholder,
-  .ant-input-password input::placeholder {
-    font-weight: 500;
-    color: #bfbfbf;
-  }
-  
   .remember-wrapper {
     margin-bottom: 12px;
   }
@@ -63,7 +57,7 @@
   }
   
   .login-button {
-    background: #1890ff;
+    background: primary-color;
     height: 45px;
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -105,17 +99,4 @@
   
   }
   
-.ant-input,
-.ant-input-password input {
-  text-align: left;
-  direction: ltr;
-}
-.ant-input-password .ant-input-suffix {
-  right: 11px;
-  left: auto;
-}
-.ant-input-password .ant-input-password-icon {
-  position: absolute !important;
-  right: 11px !important;
-  left: auto !important;
-}
+
