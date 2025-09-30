@@ -8,7 +8,7 @@
 // Colors
 $primary-color: #1677ff;
 $secondary-color: #fff;
-
+$background-color: #fafafa;
 
 //Ant inputs
 .ant-input::placeholder,
@@ -29,4 +29,40 @@ $secondary-color: #fff;
   position: absolute !important;
   right: 11px !important;
   left: auto !important;
+}
+
+.ant-layout-sider {
+  background-color: transparent;
+  // padding: 13px 20px;
+  // margin: 20px 0 0 20px;
+  padding: 15px;
+  margin: 20px 0 0 20px;
+}
+.ant-layout-sider-children {
+  width: 100% !important;
+}
+
+.ant-menu {
+  background-color: transparent;
+  border-inline-end: none !important;
+}
+.ant-menu-item {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.ant-menu-item:hover {
+  background-color: transparent !important;
+}
+.ant-menu-item .ant-menu-item-icon {
+  background-color: #fff;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+.ant-menu-item .ant-menu-item-icon svg {
+  color: #bfbfbf !important;
 }
