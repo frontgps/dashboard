@@ -1,21 +1,17 @@
 import {
-  ringIcon,
   searchIcon,
   settingIcon,
   signinIcon,
 } from '@/styles/icons/customeIcons'
-import { Badge, Input } from 'antd'
+import { Input } from 'antd'
 import styles from '@/layout/AppHeader.module.scss'
+import HeaderDropdown from '@/components/HeaderDropdown/HeaderDropdown'
 
 export default function AppHeader() {
   return (
     <div className={styles['header-container']}>
       <div className={styles['header-right']}>
-        <div className={styles['ring-logo']}>
-          <Badge size="small" count={4}>
-            {ringIcon}
-          </Badge>
-        </div>
+        <HeaderDropdown />
 
         <div className={styles['setting-logo']}>{settingIcon}</div>
 

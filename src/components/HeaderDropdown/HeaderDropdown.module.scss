@@ -1,0 +1,32 @@
+.dropdown-container {
+  display: flex;
+
+  .dropdown-right {
+    display: flex;
+    flex-direction: column;
+
+    .dropdown-time {
+      display: flex;
+      align-items: center;
+      color: rgba(0, 0, 0, 0.45);
+
+      svg {
+        fill: #8c8c8c;
+        margin-right: 4px;
+      }
+    }
+    h4 {
+      margin-bottom: 4px;
+      color: rgba(0, 0, 0, 0.65);
+      font-size: 14px;
+    }
+  }
+
+  .dropdown-img {
+    width: 36px;
+    height: 36px;
+    margin-right: 16px;
+    box-shadow: 0 4px 6px rgb(0 0 0/12%);
+    border-radius: 2px;
+  }
+}
