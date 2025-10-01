@@ -1,5 +1,9 @@
 .dropdown-container {
+  width: 100%;
   display: flex;
+  padding: 5px 16px;
+  margin-bottom: 8px;
+  direction: ltr;
 
   .dropdown-right {
     display: flex;
@@ -23,6 +27,9 @@
   }
 
   .dropdown-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 36px;
     height: 36px;
     margin-right: 16px;

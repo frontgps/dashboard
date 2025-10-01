@@ -9,11 +9,17 @@
 
     .ring-logo {
       padding: 0 10px;
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .setting-logo {
       padding: 0 10px;
       height: auto;
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .signin-logo {
@@ -21,7 +27,9 @@
       display: flex;
       color: gray;
       width: 85px;
-
+      &:hover {
+        cursor: pointer;
+      }
       span {
         font-weight: 600;
       }

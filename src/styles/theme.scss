@@ -63,3 +63,18 @@ $background-color: #fafafa;
   box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }
+
+//ant dropdown
+.ant-dropdown-menu {
+  padding: 16px 8px !important;
+  min-width: 270px !important;
+  border-radius: 12px !important;
+}
+
+.ant-dropdown-menu-item.ant-dropdown-menu-item-only-child {
+  &:hover,
+  &.ant-menu-item-active {
+    background-color: transparent !important;
+    cursor: default !important;
+  }
+}
