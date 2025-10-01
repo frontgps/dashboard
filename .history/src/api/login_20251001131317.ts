@@ -7,7 +7,7 @@ export async function login({
   password,
 }: LoginCredentials): Promise<AuthSuccessResponse> {
   const response = await axios.post<AuthSuccessResponse>(
-    `${BASE_URL}api/collections/po_users/auth-with-password`,
+api/collections/po_users/auth-with-password`,
     { identity, password }
   )
   return response.data
