@@ -1,11 +1,8 @@
-import {
-  searchIcon,
-  settingIcon,
-  signinIcon,
-} from '@/styles/icons/customeIcons'
+import { searchIcon, signinIcon } from '@/styles/icons/customeIcons'
 import { Input } from 'antd'
 import styles from '@/layout/AppHeader.module.scss'
 import HeaderDropdown from '@/components/HeaderDropdown/HeaderDropdown'
+import ConfigurationDrawer from '@/components/ConfgurationDrwaer/ConfigurationDrawer'
 
 export default function AppHeader() {
   return (
@@ -13,7 +10,7 @@ export default function AppHeader() {
       <div className={styles['header-right']}>
         <HeaderDropdown />
 
-        <div className={styles['setting-logo']}>{settingIcon}</div>
+        <ConfigurationDrawer />
 
         <a className={styles['signin-logo']} href="/login">
           <span>Sign in</span>
