@@ -13,10 +13,7 @@ type LoginFormValues = {
 
 export default function Login() {
   const { mutateLogin, isPending, error } = useLogin()
-  const onFinish: FormProps<LoginFormValues>['onFinish'] = (values) => {
-    mutateLogin({ identity: values.email, password: values.password })
-  }
-  console.log(error)
+  const onFinish: FormProps<LoginFormValues>['onFinish'] = (values) => {}
 
   return (
     <div className="container">
@@ -84,7 +81,7 @@ export default function Login() {
                   htmlType="submit"
                   size="large"
                   block
-                  loading={isPending}
+                  loading={loading}
                   className="login-button"
                 >
                   SIGN IN

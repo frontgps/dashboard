@@ -1,22 +1,26 @@
-import { Row, Col, Typography, Form, Input, Button, Switch } from 'antd'
-import type { FormProps } from 'antd'
-import '@/styles/Login.scss'
-import { useLogin } from '@/hooks/useLogin'
+import { useState } from "react";
+import { Row, Col, Typography, Form, Input, Button, Switch } from "antd";
+import type { FormProps } from "antd";
+import "@/styles/Login.scss";
 
-const { Text } = Typography
+const { Text } = Typography;
 
 type LoginFormValues = {
-  email: string
-  password: string
-  remember?: boolean
-}
+  email: string;
+  password: string;
+  remember?: boolean;
+};
 
 export default function Login() {
-  const { mutateLogin, isPending, error } = useLogin()
-  const onFinish: FormProps<LoginFormValues>['onFinish'] = (values) => {
-    mutateLogin({ identity: values.email, password: values.password })
-  }
-  console.log(error)
+  const [loading, setLoading] = useState<boolean>(false);
+
+  const onFinish: FormProps<LoginFormValues>["onFinish"] = (values) => {
+    setLoading(true);
+    setTimeout(() => {
+      setLoading(false);
+      console.log("Login Success:", values);
+    }, 1200);
+  };
 
   return (
     <div className="container">
@@ -31,32 +35,23 @@ export default function Login() {
             <Form<LoginFormValues>
               layout="vertical"
               onFinish={onFinish}
-              className="login-form"
-            >
+              className="login-form">
               <Form.Item
                 label={<span className="login-label">Email</span>}
                 name="email"
                 rules={[
-                  { required: true, message: 'Please enter your email!' },
-                  { type: 'email', message: 'Invalid email format!' },
+                  { required: true, message: "Please enter your email!" },
+                  { type: "email", message: "Invalid email format!" },
                 ]}
-                className="login-form-item"
-              >
-                <Input
-                  placeholder="Email"
-                  size="large"
-                  className="login-input"
-                />
+                className="login-form-item">
+                <Input placeholder="Email" size="large" className="login-input" />
               </Form.Item>
 
               <Form.Item
                 label={<span className="login-label">Password</span>}
                 name="password"
-                rules={[
-                  { required: true, message: 'Please enter your password!' },
-                ]}
-                className="login-form-item"
-              >
+                rules={[{ required: true, message: "Please enter your password!" }]}
+                className="login-form-item">
                 <Input.Password
                   placeholder="Password"
                   size="large"
@@ -70,8 +65,7 @@ export default function Login() {
                     name="remember"
                     valuePropName="checked"
                     noStyle
-                    initialValue={true}
-                  >
+                    initialValue={true}>
                     <Switch />
                   </Form.Item>
                   <Text className="remember-text">Remember me</Text>
@@ -84,9 +78,8 @@ export default function Login() {
                   htmlType="submit"
                   size="large"
                   block
-                  loading={isPending}
-                  className="login-button"
-                >
+                  loading={loading}
+                  className="login-button">
                   SIGN IN
                 </Button>
               </Form.Item>
@@ -106,5 +99,5 @@ export default function Login() {
         </Col>
       </Row>
     </div>
-  )
+  );
 }

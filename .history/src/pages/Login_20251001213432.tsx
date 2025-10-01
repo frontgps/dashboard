@@ -16,7 +16,6 @@ export default function Login() {
   const onFinish: FormProps<LoginFormValues>['onFinish'] = (values) => {
     mutateLogin({ identity: values.email, password: values.password })
   }
-  console.log(error)
 
   return (
     <div className="container">

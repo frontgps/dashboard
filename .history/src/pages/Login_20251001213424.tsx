@@ -16,7 +16,6 @@ export default function Login() {
   const onFinish: FormProps<LoginFormValues>['onFinish'] = (values) => {
     mutateLogin({ identity: values.email, password: values.password })
   }
-  console.log(error)
 
   return (
     <div className="container">
@@ -84,7 +83,7 @@ export default function Login() {
                   htmlType="submit"
                   size="large"
                   block
-                  loading={isPending}
+                  loading={loading}
                   className="login-button"
                 >
                   SIGN IN
