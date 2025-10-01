@@ -1,3 +1,13 @@
+:global {
+  .ant-dropdown-menu-item.ant-dropdown-menu-item-only-child {
+    &:hover,
+    &.ant-menu-item-active {
+      background-color: transparent !important;
+      cursor: default !important;
+    }
+  }
+}
+
 .dropdown-container {
   width: 100%;
   display: flex;
