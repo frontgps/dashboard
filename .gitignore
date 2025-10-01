@@ -22,7 +22,7 @@ dist-ssr/
 .env.production.local
 
 # Editor & IDE settings
-.vscode/*
+# .vscode/*
 !.vscode/extensions.json
 .idea/
 .DS_Store
