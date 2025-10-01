@@ -31,10 +31,10 @@ $background-color: #fafafa;
   left: auto !important;
 }
 
+
+//ant sider
 .ant-layout-sider {
   background-color: transparent;
-  // padding: 13px 20px;
-  // margin: 20px 0 0 20px;
   padding: 15px;
   margin: 20px 0 0 20px;
 }
@@ -63,6 +63,4 @@ $background-color: #fafafa;
   box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }
-.ant-menu-item .ant-menu-item-icon svg {
-  color: #bfbfbf !important;
-}
+
