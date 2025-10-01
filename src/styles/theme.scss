@@ -1,32 +1,3 @@
-// Global Styles
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
 // Colors
 $primary-color: #1677ff;
 $secondary-color: #fff;
-
-
-//Ant inputs
-.ant-input::placeholder,
-.ant-input-password input::placeholder {
-  font-weight: 500;
-  color: #bfbfbf;
-}
-.ant-input,
-.ant-input-password input {
-  text-align: left;
-  direction: ltr;
-}
-.ant-input-password .ant-input-suffix {
-  right: 11px;
-  left: auto;
-}
-.ant-input-password .ant-input-password-icon {
-  position: absolute !important;
-  right: 11px !important;
-  left: auto !important;
-}
