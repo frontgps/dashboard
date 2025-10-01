@@ -11,6 +11,7 @@ $secondary-color: #fff;
 $background-color: #fafafa;
 
 //Ant inputs
+
 .ant-input::placeholder,
 .ant-input-password input::placeholder {
   font-weight: 500;
@@ -30,7 +31,6 @@ $background-color: #fafafa;
   right: 11px !important;
   left: auto !important;
 }
-
 
 //ant sider
 .ant-layout-sider {
@@ -63,4 +63,3 @@ $background-color: #fafafa;
   box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
 }
-
