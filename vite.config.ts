@@ -2,13 +2,23 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
 
-const root = path.resolve(__dirname, 'src')
-
 export default defineConfig({
   plugins: [react()],
   resolve: {
     alias: {
-      '@': root, // Map @ to ./src
+      '@': path.resolve(__dirname, './src'),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@use "@/styles/theme.scss" as *;`,
+      },
+      less: {
+        javascriptEnabled: true,
+        // You can override Ant Design theme follow below pattern
+        // modifyVars: { '@primary-color': '#4f46e5' },
+      },
     },
   },
 })
