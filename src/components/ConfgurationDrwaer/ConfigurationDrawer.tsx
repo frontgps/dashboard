@@ -6,12 +6,16 @@ import drawerStyles from '@/components/ConfgurationDrwaer/ConfigurationDrawer.mo
 
 export default function ConfigurationDrawer() {
   const [open, setOpen] = useState<boolean>(false)
+  const [selectedButton, setSelectedButton] = useState<number | null>(null)
 
   const showDrawer = () => {
     setOpen(true)
   }
   const onClose = () => {
     setOpen(false)
+  }
+  const handleSelectedClick = (buttonId: number): void => {
+    setSelectedButton(buttonId)
   }
 
   return (
@@ -54,8 +58,26 @@ export default function ConfigurationDrawer() {
               Choose between 2 sidenav types
             </span>
             <div className={drawerStyles['drawer-transparent-buttons-wrapper']}>
-              <button>TRANSPARENT</button>
-              <button>WHITE</button>
+              <button
+                onClick={() => handleSelectedClick(1)}
+                className={
+                  selectedButton === 1
+                    ? drawerStyles['drawer-transparent-button-selected']
+                    : drawerStyles['drawer-transparent-button-not-selected']
+                }
+              >
+                TRANSPARENT
+              </button>
+              <button
+                className={
+                  selectedButton === 2
+                    ? drawerStyles['drawer-transparent-button-selected']
+                    : drawerStyles['drawer-transparent-button-not-selected']
+                }
+                onClick={() => setSelectedButton(2)}
+              >
+                WHITE
+              </button>
             </div>
           </div>
         </div>
