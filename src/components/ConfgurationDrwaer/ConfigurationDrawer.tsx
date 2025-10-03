@@ -1,4 +1,4 @@
-import { Drawer } from 'antd'
+import { Drawer, Switch } from 'antd'
 import { settingIcon } from '@/styles/icons/customeIcons'
 import styles from '@/layout/AppHeader.module.scss'
 import { useState } from 'react'
@@ -38,9 +38,7 @@ export default function ConfigurationDrawer() {
       >
         <div>
           <div>
-            <h5 className={drawerStyles['drawer-colors-title']}>
-              Sidebar Colors
-            </h5>
+            <h5 className={drawerStyles['drawer-titles']}>Sidebar Colors</h5>
             <div className={drawerStyles['drawer-colors-buttons']}>
               <button title="1"></button>
               <button title="2"></button>
@@ -50,10 +48,8 @@ export default function ConfigurationDrawer() {
             </div>
           </div>
 
-          <div>
-            <h5 className={drawerStyles['drawer-transparent-title']}>
-              Sidenav Type
-            </h5>
+          <div className={drawerStyles['drawer-wrapper']}>
+            <h5 className={drawerStyles['drawer-titles']}>Sidenav Type</h5>
             <span className={drawerStyles['drawer-transparent-subtitle']}>
               Choose between 2 sidenav types
             </span>
@@ -79,6 +75,11 @@ export default function ConfigurationDrawer() {
                 WHITE
               </button>
             </div>
+          </div>
+
+          <div className={drawerStyles['fixed-wrapper']}>
+            <h5 className={drawerStyles['drawer-titles']}>Navbar Fixed</h5>
+            <Switch defaultChecked={false}></Switch>
           </div>
         </div>
       </Drawer>
