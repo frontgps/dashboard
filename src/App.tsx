@@ -1,27 +1,28 @@
 import Button from '@/components/Button/Button'
 import { Route, Routes } from 'react-router-dom'
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import Login from '@/pages/Login'
-import AppLayout from './layout/AppLayout'
+
+const queryClient = new QueryClient()
 
 function App() {
   return (
-    <>
-      <Routes>
-        <Route element={<AppLayout />}>
+    <QueryClientProvider client={queryClient}>
+      <>
+        <Routes>
           <Route
             path="/"
             element={
               <>
                 <p>Interactive Frontend Camp</p>
                 <Button>add</Button>
-                <h1>hello</h1>
               </>
             }
           />
-        </Route>
-        <Route path="/login" element={<Login />} />
-      </Routes>
-    </>
+          <Route path="/login" element={<Login />} />
+        </Routes>
+      </>
+    </QueryClientProvider>
   )
 }
 
