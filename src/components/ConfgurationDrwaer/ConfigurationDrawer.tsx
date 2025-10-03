@@ -3,6 +3,7 @@ import { settingIcon } from '@/styles/icons/customeIcons'
 import styles from '@/layout/AppHeader.module.scss'
 import { useState } from 'react'
 import drawerStyles from '@/components/ConfgurationDrwaer/ConfigurationDrawer.module.scss'
+import { useHeaderPosition } from '@/hooks/useHeaderPosition'
 
 export default function ConfigurationDrawer() {
   const [open, setOpen] = useState<boolean>(false)
@@ -17,6 +18,8 @@ export default function ConfigurationDrawer() {
   const handleSelectedClick = (buttonId: number): void => {
     setSelectedButton(buttonId)
   }
+
+  const { isFixed, toggleFixed } = useHeaderPosition()
 
   return (
     <>
@@ -79,7 +82,7 @@ export default function ConfigurationDrawer() {
 
           <div className={drawerStyles['fixed-wrapper']}>
             <h5 className={drawerStyles['drawer-titles']}>Navbar Fixed</h5>
-            <Switch defaultChecked={false}></Switch>
+            <Switch checked={isFixed} onChange={toggleFixed}></Switch>
           </div>
         </div>
       </Drawer>

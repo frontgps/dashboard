@@ -1,19 +1,109 @@
 import { Layout } from 'antd'
 import AppHeader from './AppHeader'
 import { Content } from 'antd/es/layout/layout'
-import { Outlet } from 'react-router-dom'
+// import { Outlet } from 'react-router-dom'
 import Sidebar from './Sidebar'
+import { HeaderPositionProvider } from '@/context/HeaderPositionProvider'
 
 export default function AppLayout() {
   return (
-    <Layout>
+    <HeaderPositionProvider>
       <Layout>
-        <AppHeader />
-        <Content>
-          <Outlet />
-        </Content>
+        <Layout>
+          <AppHeader />
+          <Content>
+            {/* <Outlet /> */}
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+            <p>hello world</p>
+          </Content>
+        </Layout>
+        <Sidebar />
       </Layout>
-      <Sidebar />
-    </Layout>
+    </HeaderPositionProvider>
   )
 }
