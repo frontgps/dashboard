@@ -1,0 +1,90 @@
+.drawer-titles {
+  color: rgba(0, 0, 0, 0.85);
+  line-height: 1.5;
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: 0.5em;
+}
+
+.drawer-header-wrapper {
+  h4 {
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 600;
+    font-size: 24px;
+  }
+
+  span {
+    font-size: 14px;
+    font-weight: 400;
+    color: #8c8c8c;
+  }
+}
+
+$colors:
+  rgb(24, 144, 255), rgb(82, 196, 26), #ff4d4f, rgb(250, 219, 20),
+  rgb(38, 38, 38);
+
+.drawer-colors-buttons {
+  margin-bottom: 25px;
+
+  @for $i from 1 through length($colors) {
+    button:nth-child(#{$i}) {
+      background-color: nth($colors, $i);
+      width: 20px !important;
+      height: 20px !important;
+      border: none;
+      margin-right: 8px;
+      border-radius: 6px;
+    }
+  }
+}
+.drawer-wrapper {
+  margin-bottom: 25px;
+
+  .drawer-transparent-subtitle {
+    color: #8c8c8c;
+    font-size: 14px;
+  }
+  .drawer-transparent-buttons-wrapper {
+    margin-top: 1rem;
+    display: flex;
+    button {
+      width: 100%;
+      height: 40px;
+      padding: 0 15px;
+      box-shadow:
+        0 3px 5px -1px rgb(0 0 0/9%),
+        0 2px 3px -1px rgb(0 0 0/7%);
+      outline: none;
+      border: none;
+      border-radius: 4px;
+      font-weight: 400;
+      transition: color 0.3s ease;
+    }
+    button:nth-child(1) {
+      margin-right: 10px;
+    }
+
+    .drawer-transparent-button-not-selected {
+      background-color: #fff;
+      border: 1px solid #8c8c8c;
+
+      &:hover {
+        border: 1px solid rgb(24, 144, 255);
+        color: rgb(24, 144, 255);
+        cursor: pointer;
+      }
+    }
+
+    .drawer-transparent-button-selected {
+      background-color: rgb(24, 144, 255);
+      color: #fff;
+    }
+  }
+
+  .fixed-wrapper {
+    margin-bottom: 25px;
+  }
+
+  
+}

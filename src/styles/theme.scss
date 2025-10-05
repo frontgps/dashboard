@@ -1,3 +1,67 @@
 // Colors
 $primary-color: #1677ff;
 $secondary-color: #fff;
+$background-color: #fafafa;
+
+//Ant inputs
+
+.ant-input::placeholder,
+.ant-input-password input::placeholder {
+  font-weight: 500;
+  color: #bfbfbf;
+}
+.ant-input,
+.ant-input-password input {
+  text-align: left;
+  direction: ltr;
+}
+.ant-input-password .ant-input-suffix {
+  right: 11px;
+  left: auto;
+}
+.ant-input-password .ant-input-password-icon {
+  position: absolute !important;
+  right: 11px !important;
+  left: auto !important;
+}
+
+//ant sider
+.ant-layout-sider {
+  background-color: transparent;
+  padding: 15px;
+  margin: 20px 0 0 20px;
+}
+.ant-layout-sider-children {
+  width: 100% !important;
+}
+
+.ant-menu {
+  background-color: transparent;
+  border-inline-end: none !important;
+}
+.ant-menu-item {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.ant-menu-item:hover {
+  background-color: transparent !important;
+}
+.ant-menu-item .ant-menu-item-icon {
+  background-color: #fff;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 3px 5px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+}
+
+//ant dropdown
+.ant-dropdown-menu {
+  padding: 16px 8px !important;
+  min-width: 270px !important;
+  border-radius: 12px !important;
+}
+
+

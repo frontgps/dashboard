@@ -26,16 +26,13 @@ importers:
       react-dom:
         specifier: ^19.1.1
         version: 19.1.1(react@19.1.1)
-      react-router-dom:
-        specifier: ^7.9.3
-        version: 7.9.3(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
-      zustand:
-        specifier: ^5.0.8
-        version: 5.0.8(@types/react@19.1.14)(react@19.1.1)
     devDependencies:
       '@eslint/js':
         specifier: ^9.36.0
         version: 9.36.0
+      '@types/antd':
+        specifier: ^1.0.4
+        version: 1.0.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
       '@types/node':
         specifier: ^24.5.2
         version: 24.5.2
@@ -726,6 +723,10 @@ packages:
     resolution: {integrity: sha512-CLABiR+h5PYfOWr/z+vWFt5VsOA2ekQeRQBFSKlcoW6Ndx/f8rfyVmq4LbgOM4GG2qtxAxjLYLOpCNTYm4uKzw==}
     peerDependencies:
       react: ^18 || ^19
+
+  '@types/antd@1.0.4':
+    resolution: {integrity: sha512-gp4PGQckP1kNjj2H6juhjKIVwkpXwCIyIvOlwp2DC6geuhVpDHEEB5gwH4hJabVgBAFtrjBPJ58VIRV9VV9W2g==}
+    deprecated: This is a stub types definition. antd provides its own type definitions, so you do not need this installed.
 
   '@types/babel__core@7.20.5':
     resolution: {integrity: sha512-qoQprZvz5wQFJwMDqeseRXWv3rqMvhgpbXFfVyWhbx9X47POIA6i/+dXefEmZKoAgOaTdaIgNSMqMIU61yRyzA==}
@@ -2479,6 +2480,16 @@ snapshots:
     dependencies:
       '@tanstack/query-core': 5.90.2
       react: 19.1.1
+
+  '@types/antd@1.0.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)':
+    dependencies:
+      antd: 5.27.4(react-dom@19.1.1(react@19.1.1))(react@19.1.1)
+    transitivePeerDependencies:
+      - date-fns
+      - luxon
+      - moment
+      - react
+      - react-dom
 
   '@types/babel__core@7.20.5':
     dependencies:
