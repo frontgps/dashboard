@@ -1,49 +1,48 @@
-import Button from '@/components/Button/Button'
-import { Route, Routes } from 'react-router-dom'
-import Login from '@/pages/Login'
-import AppLayout from './layout/AppLayout'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import Dashboard from './pages/Dashboard'
+import { lazy, Suspense } from 'react'
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import ProtectedRoutes from './pages/ProtectedRoutes'
 const queryClient = new QueryClient()
+
+const withSuspense = (el: React.JSX.Element) => (
+  <Suspense fallback={<>Loading...</>}>{el}</Suspense>
+)
+
+const ProtectedLayout = lazy(() => import('@/layout/ProtectedLayout'))
+
+const HomePage = lazy(() => import('@/pages/Dashboard'))
+const LoginPage = lazy(() => import('@/pages/Login'))
+
+export const router = createBrowserRouter([
+  {
+    path: '/dashboard',
+    element: withSuspense(
+      <ProtectedRoutes>
+        <ProtectedLayout />
+      </ProtectedRoutes>
+    ),
+    children: [
+      {
+        path: '/dashboard',
+        element: withSuspense(<HomePage />),
+      },
+      {
+        path: '/dashboard/mahdi',
+        element: withSuspense(<HomePage />),
+      },
+    ],
+  },
+  {
+    path: '/login',
+    element: withSuspense(<LoginPage />),
+  },
+  // PLOP_INJECT_ROUTES
+])
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <>
-        <Routes>
-          <Route element={<AppLayout />}>
-            <Route
-              path="/"
-              element={
-                <>
-                  <p>Interactive Frontend Camp</p>
-                  <Button>add</Button>
-                </>
-              }
-            />
-            <Route path="/login" element={<Login />} />
-          </Route>
-          <Route
-            path="/"
-            element={
-              <>
-                <p>Interactive Frontend Camp</p>
-                <Button>add</Button>
-              </>
-            }
-          />
-          <Route path="/login" element={<Login />} />
-          <Route
-            path="/dashboard"
-            element={
-              <ProtectedRoutes>
-                <Dashboard />
-              </ProtectedRoutes>
-            }
-          />
-        </Routes>
-      </>
+      <RouterProvider router={router} />
     </QueryClientProvider>
   )
 }
