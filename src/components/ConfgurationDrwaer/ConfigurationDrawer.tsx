@@ -1,5 +1,5 @@
 import { Drawer, Switch } from 'antd';
-import { settingIcon } from '@/styles/icons/customeIcons';
+import { facebookIcon, settingIcon, tweeterIcon } from '@/styles/icons/customeIcons';
 import styles from '@/layout/AppHeader.module.scss';
 import { useState } from 'react';
 import drawerStyles from '@/components/ConfgurationDrwaer/ConfigurationDrawer.module.scss';
@@ -88,6 +88,20 @@ export default function ConfigurationDrawer() {
           <div className={drawerStyles['download-wrapper']}>
             <button>FREE DOWNLOAD</button>
             <button>VIEW DOCUMENTATION</button>
+          </div>
+
+          <div className={drawerStyles['share-section']}>
+            <h5 className={drawerStyles['drawer-titles']}>Thanks for sharing!</h5>
+            <div className={drawerStyles['share-buttons-wrapper']}>
+              <button>
+                <span>{tweeterIcon}</span>
+                <span>TWEET</span>
+              </button>
+              <button>
+                <span>{facebookIcon}</span>
+                <span>SHARE</span>
+              </button>
+            </div>
           </div>
         </div>
       </Drawer>
