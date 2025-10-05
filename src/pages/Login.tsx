@@ -2,6 +2,9 @@ import { Row, Col, Typography, Form, Input, Button, Switch } from 'antd'
 import type { FormProps } from 'antd'
 import '@/styles/Login.scss'
 import { useLogin } from '@/hooks/useLogin'
+import { useEffect } from 'react'
+import { useAuthStore } from '@/zustand/authStore'
+import { useNavigate } from 'react-router-dom'
 
 const { Text } = Typography
 
@@ -16,7 +19,12 @@ export default function Login() {
   const onFinish: FormProps<LoginFormValues>['onFinish'] = (values) => {
     mutateLogin({ identity: values.email, password: values.password })
   }
+  const isAuth = useAuthStore((state) => state.isAuth)
+  const navigate = useNavigate()
   console.log(error)
+  useEffect(() => {
+    if (isAuth) navigate('/dashboard')
+  }, [isAuth])
 
   return (
     <div className="container">
