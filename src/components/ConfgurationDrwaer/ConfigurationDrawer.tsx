@@ -51,7 +51,7 @@ export default function ConfigurationDrawer() {
             </div>
           </div>
 
-          <div className={drawerStyles['drawer-wrapper']}>
+          <div className={drawerStyles['drawer-transparent-wrapper']}>
             <h5 className={drawerStyles['drawer-titles']}>Sidenav Type</h5>
             <span className={drawerStyles['drawer-transparent-subtitle']}>
               Choose between 2 sidenav types

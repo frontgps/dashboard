@@ -20,9 +20,7 @@
   }
 }
 
-$colors:
-  rgb(24, 144, 255), rgb(82, 196, 26), #ff4d4f, rgb(250, 219, 20),
-  rgb(38, 38, 38);
+$colors: rgb(24, 144, 255), rgb(82, 196, 26), #ff4d4f, rgb(250, 219, 20), rgb(38, 38, 38);
 
 .drawer-colors-buttons {
   margin-bottom: 25px;
@@ -140,7 +138,7 @@ $colors:
 .share-section {
   margin-top: 25px;
 
-  h5{
+  h5 {
     text-align: center;
   }
 
