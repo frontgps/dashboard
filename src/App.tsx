@@ -1,6 +1,5 @@
 import Button from '@/components/Button/Button'
 import { Route, Routes } from 'react-router-dom'
-import { QueryClientProvider, QueryClient } from '@tanstack/react-query'
 import Login from '@/pages/Login'
 import AppLayout from './layout/AppLayout'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
