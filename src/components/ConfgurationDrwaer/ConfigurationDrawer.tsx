@@ -1,25 +1,25 @@
-import { Drawer, Switch } from 'antd'
-import { settingIcon } from '@/styles/icons/customeIcons'
-import styles from '@/layout/AppHeader.module.scss'
-import { useState } from 'react'
-import drawerStyles from '@/components/ConfgurationDrwaer/ConfigurationDrawer.module.scss'
-import { useHeaderPosition } from '@/hooks/useHeaderPosition'
+import { Drawer, Switch } from 'antd';
+import { settingIcon } from '@/styles/icons/customeIcons';
+import styles from '@/layout/AppHeader.module.scss';
+import { useState } from 'react';
+import drawerStyles from '@/components/ConfgurationDrwaer/ConfigurationDrawer.module.scss';
+import { useHeaderPosition } from '@/hooks/useHeaderPosition';
 
 export default function ConfigurationDrawer() {
-  const [open, setOpen] = useState<boolean>(false)
-  const [selectedButton, setSelectedButton] = useState<number | null>(null)
+  const [open, setOpen] = useState<boolean>(false);
+  const [selectedButton, setSelectedButton] = useState<number | null>(null);
 
   const showDrawer = () => {
-    setOpen(true)
-  }
+    setOpen(true);
+  };
   const onClose = () => {
-    setOpen(false)
-  }
+    setOpen(false);
+  };
   const handleSelectedClick = (buttonId: number): void => {
-    setSelectedButton(buttonId)
-  }
+    setSelectedButton(buttonId);
+  };
 
-  const { isFixed, toggleFixed } = useHeaderPosition()
+  const { isFixed, toggleFixed } = useHeaderPosition();
 
   return (
     <>
@@ -84,8 +84,13 @@ export default function ConfigurationDrawer() {
             <h5 className={drawerStyles['drawer-titles']}>Navbar Fixed</h5>
             <Switch checked={isFixed} onChange={toggleFixed}></Switch>
           </div>
+
+          <div className={drawerStyles['download-wrapper']}>
+            <button>FREE DOWNLOAD</button>
+            <button>VIEW DOCUMENTATION</button>
+          </div>
         </div>
       </Drawer>
     </>
-  )
+  );
 }
