@@ -1,0 +1,75 @@
+.header-container-not-fixed {
+  display: flex;
+  transition: background-color 0.3s ease;
+}
+.header-container-fixed {
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+}
+
+.header-container-scrolled {
+  background-color: #fff;
+}
+
+.header-right {
+  display: flex;
+  width: 50%;
+  align-items: center;
+  padding: 25px;
+
+  .ring-logo {
+    padding: 0 10px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .setting-logo {
+    padding: 0 10px;
+    height: auto;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .signin-logo {
+    padding: 0 10px;
+    display: flex;
+    color: gray;
+    width: 85px;
+    &:hover {
+      cursor: pointer;
+    }
+    span {
+      font-weight: 600;
+    }
+  }
+
+  .input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    width: 210px;
+    border-radius: 6px;
+    border: 1px solid #d9d9d9;
+    padding: 4px 11px;
+    margin: 0 7px;
+    transition:
+      border 0.3s ease,
+      box-shadow 0.3s ease;
+    &:focus-within {
+      box-shadow: 0 0 0 2px #cde5fb;
+    }
+
+    :global(.customeInput.ant-input),
+    :global(.customeInput.ant-input:focus),
+    :global(.customeInput.ant-input-focused) {
+      border: none !important;
+      outline: none !important;
+      box-shadow: none !important;
+    }
+  }
+}
