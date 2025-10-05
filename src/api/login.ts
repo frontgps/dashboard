@@ -1,7 +1,7 @@
-import axios from 'axios'
-import { BASE_URL } from './baseUrl'
-import { AuthSuccessResponse, LoginCredentials } from '@/types/auth'
-import { requestInstance } from './instance'
+import axios from 'axios';
+import { BASE_URL } from './baseUrl';
+import type { AuthSuccessResponse, LoginCredentials } from '@/types/auth';
+import { requestInstance } from './instance';
 
 export async function login({
   identity,
@@ -9,7 +9,7 @@ export async function login({
 }: LoginCredentials): Promise<AuthSuccessResponse> {
   const response = await requestInstance.post<AuthSuccessResponse>(
     `${BASE_URL}api/collections/po_users/auth-with-password`,
-    { identity, password }
-  )
-  return response.data
+    { identity, password },
+  );
+  return response.data;
 }
