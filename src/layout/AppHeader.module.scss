@@ -34,6 +34,13 @@
     }
   }
 
+  .drawer-sider-logo {
+    padding: 0 10px;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   .signin-logo {
     padding: 0 10px;
     display: flex;

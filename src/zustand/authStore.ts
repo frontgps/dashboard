@@ -1,22 +1,22 @@
-import { AuthSuccessResponse } from '@/types/auth'
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import type { AuthSuccessResponse } from '@/types/auth';
+import { create } from 'zustand';
+import { persist } from 'zustand/middleware';
 
 interface StoreState {
   //states
-  token: string | null
-  user: AuthSuccessResponse['record'] | null
-  isAuth: boolean
+  token: string | null;
+  user: AuthSuccessResponse['record'] | null;
+  isAuth: boolean;
   //actions
-  setAuth: (data: AuthSuccessResponse) => void
-  clearAuth: () => void
+  setAuth: (data: AuthSuccessResponse) => void;
+  clearAuth: () => void;
 }
 
 const initialState = {
   isAuth: false,
   token: null,
   user: null,
-}
+};
 
 export const useAuthStore = create<StoreState>()(
   persist(
@@ -24,8 +24,7 @@ export const useAuthStore = create<StoreState>()(
       //state
       ...initialState,
       //action
-      setAuth: (data) =>
-        set({ token: data.token, user: data.record, isAuth: true }),
+      setAuth: (data) => set({ token: data.token, user: data.record, isAuth: true }),
       clearAuth: () => set({ token: null, user: null, isAuth: false }),
     }),
     {
@@ -35,6 +34,6 @@ export const useAuthStore = create<StoreState>()(
         user: state.user,
         isAuth: state.isAuth,
       }),
-    }
-  )
-)
+    },
+  ),
+);
