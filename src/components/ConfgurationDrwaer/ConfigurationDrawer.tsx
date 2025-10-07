@@ -4,10 +4,13 @@ import styles from '@/layout/AppHeader.module.scss';
 import { useState } from 'react';
 import drawerStyles from '@/components/ConfgurationDrwaer/ConfigurationDrawer.module.scss';
 import { useHeaderPosition } from '@/hooks/useHeaderPosition';
+import { useStargazers } from '@/hooks/useStargazers';
 
 export default function ConfigurationDrawer() {
   const [open, setOpen] = useState<boolean>(false);
   const [selectedButton, setSelectedButton] = useState<number | null>(null);
+
+  const { stars, loading, error } = useStargazers();
 
   const showDrawer = () => {
     setOpen(true);
@@ -114,7 +117,9 @@ export default function ConfigurationDrawer() {
                 className={drawerStyles['stargazers-section']}
                 href="https://github.com/InteractiveFrontend/dashboard/stargazers"
               >
-                3
+                {loading && <p>Loading stars...</p>}
+                {error && <p style={{ color: 'red' }}>{error}</p>}
+                {stars && <p>{stars}</p>}
               </a>
             </span>
           </div>
