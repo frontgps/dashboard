@@ -45,7 +45,7 @@
     padding: 0 10px;
     display: flex;
     color: gray;
-    width: 85px;
+    min-width: 85px;
     &:hover {
       cursor: pointer;
     }

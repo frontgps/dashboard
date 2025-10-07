@@ -6,10 +6,14 @@ import ConfigurationDrawer from '@/components/ConfgurationDrwaer/ConfigurationDr
 import { useHeaderPosition } from '@/hooks/useHeaderPosition';
 import { useEffect, useState } from 'react';
 import DrawerSidebar from '@/components/DrawerSidebar/DrawerSidebar';
+import useWindowWidth from '@/hooks/useWindowWidth';
 
 export default function AppHeader() {
   const { isFixed } = useHeaderPosition();
   const [scrolled, setScrolled] = useState<boolean>(false);
+
+  const width = useWindowWidth();
+  const isMobile = width < 990;
 
   useEffect(() => {
     if (!isFixed) return;
@@ -38,7 +42,7 @@ export default function AppHeader() {
 
         <ConfigurationDrawer />
 
-        <DrawerSidebar />
+        {isMobile && <DrawerSidebar />}
 
         <a className={styles['signin-logo']} href="/login">
           <span>Sign in</span>
