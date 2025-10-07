@@ -1,5 +1,5 @@
 import { searchIcon, signinIcon } from '@/styles/icons/customeIcons';
-import { Input } from 'antd';
+import { Breadcrumb, Input } from 'antd';
 import styles from '@/layout/AppHeader.module.scss';
 import HeaderDropdown from '@/components/HeaderDropdown/HeaderDropdown';
 import ConfigurationDrawer from '@/components/ConfgurationDrwaer/ConfigurationDrawer';
@@ -7,6 +7,7 @@ import { useHeaderPosition } from '@/hooks/useHeaderPosition';
 import { useEffect, useState } from 'react';
 import DrawerSidebar from '@/components/DrawerSidebar/DrawerSidebar';
 import useWindowWidth from '@/hooks/useWindowWidth';
+import { useLocation } from 'react-router-dom';
 
 export default function AppHeader() {
   const { isFixed } = useHeaderPosition();
@@ -14,6 +15,9 @@ export default function AppHeader() {
 
   const width = useWindowWidth();
   const isMobile = width < 990;
+
+  const location = useLocation();
+  const pathnameLastPart = location.pathname.split('/').filter(Boolean).pop();
 
   useEffect(() => {
     if (!isFixed) return;
@@ -55,7 +59,22 @@ export default function AppHeader() {
         </span>
       </div>
 
-      <div></div>
+      <div>
+        <div className={styles['breadcrumb-wrapper']}>
+          <Breadcrumb
+            style={{ direction: 'ltr' }}
+            items={[
+              {
+                title: 'Pages',
+              },
+              {
+                title: <a href={location.pathname}>{pathnameLastPart}</a>,
+              },
+            ]}
+          />
+          <h4>{pathnameLastPart}</h4>
+        </div>
+      </div>
     </div>
   );
 }

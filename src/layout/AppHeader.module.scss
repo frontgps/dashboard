@@ -1,5 +1,9 @@
 .header-container-not-fixed {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  margin: 10px 20px;
   transition: background-color 0.3s ease;
 }
 .header-container-fixed {
@@ -17,10 +21,10 @@
   display: flex;
   width: 50%;
   align-items: center;
-  padding: 25px;
+  padding: 0 12px;
 
   .ring-logo {
-    padding: 0 10px;
+    padding-left: 10px;
     &:hover {
       cursor: pointer;
     }
