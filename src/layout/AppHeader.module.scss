@@ -80,3 +80,16 @@
     }
   }
 }
+
+.breadcrumb-wrapper {
+  direction: ltr;
+  display: flex;
+  flex-direction: column;
+  padding: 0 12px;
+
+  h4 {
+    margin-top: 4px;
+    font-size: 20px;
+    font-weight: 700;
+  }
+}
