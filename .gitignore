@@ -15,12 +15,12 @@ dist/
 dist-ssr/
 
 # Local environment files
+.env
 *.local
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
-.evn*
 
 # Editor & IDE settings
 # .vscode/*
