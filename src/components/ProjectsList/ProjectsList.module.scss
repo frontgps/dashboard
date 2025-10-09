@@ -1,0 +1,58 @@
+:global(.c-ant-card-project .ant-card-body) {
+  padding: 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  text-align: left;
+  direction: ltr;
+
+}
+
+.header {
+  padding: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+.title {
+  :global(.ant-typography) {
+    margin: 0;
+  }
+}
+.lastweek {
+  color: #8c8c8c;
+  font-weight: 600;
+  .blue {
+    margin-left: 5px;
+    color: #1890ff;
+    font-weight: 600;
+  }
+}
+.navItem {
+  :global(.ant-radio-button-wrapper-checked) {
+    border-color: #007bff;
+    box-shadow: 0 0 5px #50aaff;
+  }
+  button {
+    border-radius: 0;
+  }
+  :first-child {
+    border-top-right-radius: 12px;
+    border-bottom-right-radius: 12px;
+  }
+  :last-child {
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+  }
+}
+
+.memberAvatar {
+  transition:
+    transform 0.2s ease-in-out,
+    z-index 0s;
+
+  &:hover {
+    z-index: 100 !important;
+    transform: translateY(-2px) scale(1.1);
+  }
+}
