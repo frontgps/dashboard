@@ -1,0 +1,58 @@
+:global(.c-ant-card-activeuser .ant-card-body) {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  direction: ltr;
+  text-align: left;
+}
+
+.chartTitle {
+  font-weight: 700;
+  font-size: 18px;
+  margin: 0 !important;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.comparisonText {
+  color: #8c8c8c;
+  font-weight: 600;
+  margin-bottom: 0;
+  font-size: 14px;
+
+  .comparisonHighlight {
+    font-weight: 700;
+    color: #52c41a;
+  }
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  .traffic {
+    color: #8c8c8c !important;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    svg {
+      color: #b37feb;
+    }
+  }
+  .sales {
+    color: #8c8c8c !important;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 14px;
+    svg {
+      color: #1890ff;
+    }
+  }
+}
