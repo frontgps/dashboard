@@ -1,0 +1,24 @@
+.wrapper {
+  padding: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1) !important;
+  background-color: #fff;
+  text-align: left;
+  direction: ltr;
+  border-radius: 10px;
+  height: 100%;
+
+  h5 {
+    margin: 0;
+  }
+}
+
+.description {
+  margin-bottom: 24px;
+  color: #8c8c8c;
+  font-weight: 600;
+  .green {
+    margin-left: 5px;
+    color: #52c41a;
+    font-weight: 600;
+  }
+}
