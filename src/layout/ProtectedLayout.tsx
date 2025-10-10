@@ -1,24 +1,36 @@
-import { Layout } from 'antd'
-import AppHeader from './AppHeader'
-import { Content } from 'antd/es/layout/layout'
+import { Layout } from 'antd';
+import AppHeader from './AppHeader';
+import { Content } from 'antd/es/layout/layout';
 // import { Outlet } from 'react-router-dom'
-import Sidebar from './Sidebar'
-import { HeaderPositionProvider } from '@/context/HeaderPositionProvider'
-import { Outlet } from 'react-router-dom'
+import Sidebar from './Sidebar';
+import { HeaderPositionProvider } from '@/context/HeaderPositionProvider';
+import { Outlet } from 'react-router-dom';
+import useWindowWidth from '@/hooks/useWindowWidth';
 
 export default function AppLayout() {
+  const width = useWindowWidth();
+  const isMobile = width < 990;
+
   return (
     <HeaderPositionProvider>
-      <Layout>
+      {isMobile ? (
         <Layout>
           <AppHeader />
           <Content>
             <Outlet />
-            {/* <p>hello world</p> */}
           </Content>
         </Layout>
-        <Sidebar />
-      </Layout>
+      ) : (
+        <Layout>
+          <Layout>
+            <AppHeader />
+            <Content>
+              <Outlet />
+            </Content>
+          </Layout>
+          <Sidebar />
+        </Layout>
+      )}
     </HeaderPositionProvider>
-  )
+  );
 }

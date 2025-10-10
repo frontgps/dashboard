@@ -22,9 +22,11 @@
     "moduleDetection": "auto",
     "noUnusedLocals": false,
     "noUnusedParameters": false,
-    "erasableSyntaxOnly": false,
-    "noFallthroughCasesInSwitch": true,
-    "noUncheckedSideEffectImports": true
+    "noFallthroughCasesInSwitch": true
+
+    //Does not match the Typescript version(requires version 5.8 and above)
+    // "erasableSyntaxOnly": false,
+    // "noUncheckedSideEffectImports": true
   },
   "include": ["src", "vite.config.ts"]
 }

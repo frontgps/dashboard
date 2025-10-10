@@ -20,9 +20,7 @@
   }
 }
 
-$colors:
-  rgb(24, 144, 255), rgb(82, 196, 26), #ff4d4f, rgb(250, 219, 20),
-  rgb(38, 38, 38);
+$colors: rgb(24, 144, 255), rgb(82, 196, 26), #ff4d4f, rgb(250, 219, 20), rgb(38, 38, 38);
 
 .drawer-colors-buttons {
   margin-bottom: 25px;
@@ -38,7 +36,7 @@ $colors:
     }
   }
 }
-.drawer-wrapper {
+.drawer-transparent-wrapper {
   margin-bottom: 25px;
 
   .drawer-transparent-subtitle {
@@ -81,10 +79,87 @@ $colors:
       color: #fff;
     }
   }
+}
 
-  .fixed-wrapper {
-    margin-bottom: 25px;
+.fixed-wrapper {
+  margin-bottom: 25px;
+}
+
+.download-wrapper {
+  display: flex;
+  flex-direction: column;
+  button {
+    width: 100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: none;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgb(0 0 0/7%);
+  }
+  button:nth-child(1) {
+    background-color: rgb(38, 38, 38);
+    color: rgb(255, 255, 255);
+  }
+  button:nth-child(2) {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid #d9d9d9;
+  }
+}
+
+.star-container {
+  margin-top: 15px;
+
+  .star-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .star-section {
+      display: flex;
+      align-items: center;
+      font-size: 12px;
+      padding: 5px 10px;
+      border: 1px solid rgba(27, 31, 36, 0.15);
+      border-right: none;
+      border-radius: 0.25em 0 0 0.25em;
+      background-color: #ebf0f4;
+      color: #24292f;
+    }
+    .stargazers-section {
+      font-size: 12px;
+      padding: 5px 10px;
+      border: 1px solid rgba(27, 31, 36, 0.15);
+      border-radius: 0 0.25rem 0.25rem 0;
+      color: #24292f;
+    }
+  }
+}
+
+.share-section {
+  margin-top: 25px;
+
+  h5 {
+    text-align: center;
   }
 
-  
+  .share-buttons-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    button {
+      background-color: rgb(38, 38, 38);
+      color: rgb(255, 255, 255);
+      border: none;
+      border-radius: 5px;
+      margin: 0 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 15px;
+
+      span svg {
+        margin-right: 8px;
+      }
+    }
+  }
 }

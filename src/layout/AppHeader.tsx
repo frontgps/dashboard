@@ -1,25 +1,34 @@
-import { searchIcon, signinIcon } from '@/styles/icons/customeIcons'
-import { Input } from 'antd'
-import styles from '@/layout/AppHeader.module.scss'
-import HeaderDropdown from '@/components/HeaderDropdown/HeaderDropdown'
-import ConfigurationDrawer from '@/components/ConfgurationDrwaer/ConfigurationDrawer'
-import { useHeaderPosition } from '@/hooks/useHeaderPosition'
-import { useEffect, useState } from 'react'
+import { searchIcon, signinIcon } from '@/styles/icons/customeIcons';
+import { Breadcrumb, Input } from 'antd';
+import styles from '@/layout/AppHeader.module.scss';
+import HeaderDropdown from '@/components/HeaderDropdown/HeaderDropdown';
+import ConfigurationDrawer from '@/components/ConfgurationDrwaer/ConfigurationDrawer';
+import { useHeaderPosition } from '@/hooks/useHeaderPosition';
+import { useEffect, useState } from 'react';
+import DrawerSidebar from '@/components/DrawerSidebar/DrawerSidebar';
+import useWindowWidth from '@/hooks/useWindowWidth';
+import { useLocation } from 'react-router-dom';
 
 export default function AppHeader() {
-  const { isFixed } = useHeaderPosition()
-  const [scrolled, setScrolled] = useState<boolean>(false)
+  const { isFixed } = useHeaderPosition();
+  const [scrolled, setScrolled] = useState<boolean>(false);
+
+  const width = useWindowWidth();
+  const isMobile = width < 990;
+
+  const location = useLocation();
+  const pathnameLastPart = location.pathname.split('/').filter(Boolean).pop();
 
   useEffect(() => {
-    if (!isFixed) return
+    if (!isFixed) return;
 
     const handleScroll = () => {
-      setScrolled(window.scrollY > 0)
-    }
+      setScrolled(window.scrollY > 0);
+    };
 
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [isFixed])
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isFixed]);
 
   const headerClass = [
     styles['header-container-not-fixed'],
@@ -28,7 +37,7 @@ export default function AppHeader() {
   ]
 
     .filter(Boolean)
-    .join(' ')
+    .join(' ');
 
   return (
     <div className={headerClass}>
@@ -36,6 +45,8 @@ export default function AppHeader() {
         <HeaderDropdown />
 
         <ConfigurationDrawer />
+
+        {isMobile && <DrawerSidebar />}
 
         <a className={styles['signin-logo']} href="/login">
           <span>Sign in</span>
@@ -48,7 +59,22 @@ export default function AppHeader() {
         </span>
       </div>
 
-      <div></div>
+      <div>
+        <div className={styles['breadcrumb-wrapper']}>
+          <Breadcrumb
+            style={{ direction: 'ltr' }}
+            items={[
+              {
+                title: 'Pages',
+              },
+              {
+                title: <a href={location.pathname}>{pathnameLastPart}</a>,
+              },
+            ]}
+          />
+          <h4>{pathnameLastPart}</h4>
+        </div>
+      </div>
     </div>
-  )
+  );
 }

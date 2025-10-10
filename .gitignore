@@ -15,6 +15,7 @@ dist/
 dist-ssr/
 
 # Local environment files
+.env
 *.local
 .env.local
 .env.development.local
