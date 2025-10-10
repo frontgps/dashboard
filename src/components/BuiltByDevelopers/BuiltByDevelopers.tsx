@@ -1,10 +1,11 @@
-import '@/components/BuiltByDevelopers/BuiltByDevelopers.module.scss';
+import styles from './BuiltByDevelopers.module.scss';
 import { Button, Card, Col, ConfigProvider, Image, Row, Typography } from 'antd';
 import { RightOutlined } from '@ant-design/icons';
+
 export default function BuiltByDevelopers() {
   return (
     <ConfigProvider direction="ltr">
-      <Card className="builtByDevelopers">
+      <Card className={styles.builtByDevelopers}>
         <Row align="middle" gutter={[16, 16]}>
           <Col md={14}>
             <Typography.Text type="secondary">Built by developers</Typography.Text>

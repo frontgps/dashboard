@@ -1,22 +1,23 @@
-:global(.builtByDevelopers .ant-col) {
-  .builtByDevelopers {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
+.builtByDevelopers {
+  height: 200px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 12px;
+}
 
-  h5 {
-    font-size: 20px;
-    font-weight: 600;
+h5 {
+  font-size: 20px;
+  font-weight: 600;
 
-    margin: 0 0 15px 0 !important;
-  }
+  margin: 0 0 15px 0 !important;
+}
 
-  button {
-    display: block;
-    width: 100%;
-    text-align: left;
-    padding: 0;
-  }
-  img {
-    border-radius: 10px;
-  }
+button {
+  display: block;
+  width: 100%;
+  text-align: left;
+  padding: 0;
+}
+img {
+  display: none;
+  border-radius: 10px;
 }
