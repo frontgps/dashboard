@@ -1,0 +1,46 @@
+.title {
+  font-weight: 600;
+  color: #8c8c8c;
+  font-size: 14px;
+}
+
+.value {
+  font-weight: 700;
+  margin-bottom: 0;
+  font-size: 30px;
+}
+.percentage {
+  font-weight: 600;
+  font-size: 14px;
+  margin-left: 5px;
+}
+.positive {
+  color: #52c41a;
+}
+.negative {
+  color: #ff0000;
+}
+.iconBox {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #1890ff;
+  color: #f9f9f9;
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+
+  svg {
+    width: 22px;
+    height: 22px;
+  }
+}
+:global(.c-ant-card-body .ant-card-body) {
+  height: 94px;
+  padding: 12px;
+}

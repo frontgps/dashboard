@@ -1,0 +1,55 @@
+.salesCard {
+  border-radius: 12px;
+  background: linear-gradient(to right, #0845b0 0%, #9a8afd 100%);
+}
+:global(.c-ant-card-chart .ant-card-body) {
+  padding: 12px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+:global(.c-ant-typography .ant-typography) {
+  direction: ltr;
+}
+
+.chartDetails {
+  margin-top: 30px;
+}
+
+.chartTitle {
+  font-weight: 700;
+  font-size: 16px;
+  margin: 0 !important;
+  line-height: 1.5;
+  color: rgba(0, 0, 0, 0.85);
+}
+
+.chartDetails :global(p) {
+  font-size: 14px;
+  color: #fff !important;
+  line-height: 1.5;
+  margin-bottom: 0 !important;
+}
+
+.comparisonText {
+  color: #8c8c8c;
+  font-weight: 600;
+  margin-bottom: 1em;
+
+  .comparisonHighlight {
+    font-weight: 700;
+    color: #52c41a !important;
+  }
+}
+
+.descriptionText {
+  color: #8c8c8c;
+  font-weight: 600;
+  margin-bottom: 1em;
+}
+
+.statItem {
+  text-align: left;
+
+  :global(h4) {
+    margin: 0;
+  }
+}
