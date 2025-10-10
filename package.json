@@ -19,6 +19,7 @@
     "antd": "^5.27.4",
     "apexcharts": "^5.3.5",
     "axios": "^1.12.2",
+    "clsx": "^2.1.1",
     "react": "^19.1.1",
     "react-apexcharts": "^1.7.0",
     "react-dom": "^19.1.1",
