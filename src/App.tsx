@@ -1,17 +1,18 @@
-import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
-import { lazy, Suspense } from 'react'
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
-import ProtectedRoutes from './pages/ProtectedRoutes'
-const queryClient = new QueryClient()
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import { lazy, Suspense } from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import ProtectedRoutes from './pages/ProtectedRoutes';
+import Tables from './pages/Tables';
+const queryClient = new QueryClient();
 
 const withSuspense = (el: React.JSX.Element) => (
   <Suspense fallback={<>Loading...</>}>{el}</Suspense>
-)
+);
 
-const ProtectedLayout = lazy(() => import('@/layout/ProtectedLayout'))
+const ProtectedLayout = lazy(() => import('@/layout/ProtectedLayout'));
 
-const HomePage = lazy(() => import('@/pages/Dashboard'))
-const LoginPage = lazy(() => import('@/pages/Login'))
+const HomePage = lazy(() => import('@/pages/Dashboard'));
+const LoginPage = lazy(() => import('@/pages/Login'));
 
 export const router = createBrowserRouter([
   {
@@ -19,7 +20,7 @@ export const router = createBrowserRouter([
     element: withSuspense(
       <ProtectedRoutes>
         <ProtectedLayout />
-      </ProtectedRoutes>
+      </ProtectedRoutes>,
     ),
     children: [
       {
@@ -30,6 +31,10 @@ export const router = createBrowserRouter([
         path: '/dashboard/mahdi',
         element: withSuspense(<HomePage />),
       },
+      {
+        path: '/dashboard/tables',
+        element: withSuspense(<Tables />),
+      },
     ],
   },
   {
@@ -37,14 +42,14 @@ export const router = createBrowserRouter([
     element: withSuspense(<LoginPage />),
   },
   // PLOP_INJECT_ROUTES
-])
+]);
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <RouterProvider router={router} />
     </QueryClientProvider>
-  )
+  );
 }
 
-export default App
+export default App;
