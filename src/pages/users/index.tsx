@@ -2,13 +2,15 @@ import { useState } from 'react';
 import { Table, Typography, Space, Button, Popconfirm, message } from 'antd';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { getUsers, deleteUser, type User } from '@/api/users';
+import CreateUserModal from './create';
 
 const { Title } = Typography;
 
-export default function users() {
+export default function Users() {
   const queryClient = useQueryClient();
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const { data, isLoading, isError, refetch } = useQuery({
     queryKey: ['users', page, pageSize],
@@ -29,11 +31,7 @@ export default function users() {
   const columns = [
     { title: 'ID', dataIndex: 'id', key: 'id', width: 120 },
     { title: 'Username', dataIndex: 'username', key: 'username' },
-    {
-      title: 'Email',
-      dataIndex: 'Email',
-      key: 'email',
-    },
+    { title: 'Email', dataIndex: 'email', key: 'email' },
     {
       title: 'Created',
       dataIndex: 'created',
@@ -65,9 +63,14 @@ export default function users() {
         <Title level={3} style={{ margin: 0 }}>
           Users
         </Title>
-        <Button type="primary" onClick={() => refetch()} loading={isLoading}>
-          Refresh
-        </Button>
+        <Space>
+          <Button type="default" onClick={() => refetch()} loading={isLoading}>
+            Refresh
+          </Button>
+          <Button type="primary" onClick={() => setIsModalOpen(true)}>
+            + Create User
+          </Button>
+        </Space>
       </Space>
 
       <Table
@@ -89,6 +92,15 @@ export default function users() {
       />
 
       {isError && <p style={{ color: 'red' }}>Failed to load users.</p>}
+
+      <CreateUserModal
+        open={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onSuccess={() => {
+          setIsModalOpen(false);
+          queryClient.invalidateQueries({ queryKey: ['users'] });
+        }}
+      />
     </div>
   );
 }
