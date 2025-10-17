@@ -12,6 +12,7 @@ const ProtectedLayout = lazy(() => import('@/layout/ProtectedLayout'));
 
 const HomePage = lazy(() => import('@/pages/Dashboard'));
 const LoginPage = lazy(() => import('@/pages/Login'));
+const UsersPage = lazy(() => import('@/pages/users/index'));
 
 export const router = createBrowserRouter([
   {
@@ -27,8 +28,8 @@ export const router = createBrowserRouter([
         element: withSuspense(<HomePage />),
       },
       {
-        path: '/mahdi',
-        element: withSuspense(<HomePage />),
+        path: '/users',
+        element: withSuspense(<UsersPage />),
       },
       {
         path: '/tables',

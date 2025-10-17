@@ -41,6 +41,21 @@ export default function AppHeader() {
 
   return (
     <div className={headerClass}>
+      <div className={styles['breadcrumb-wrapper']}>
+        <Breadcrumb
+          style={{ direction: 'ltr' }}
+          items={[
+            {
+              title: 'Pages',
+            },
+            {
+              title: <a href={location.pathname}>{pathnameLastPart}</a>,
+            },
+          ]}
+        />
+        <h4>{pathnameLastPart}</h4>
+      </div>
+
       <div className={styles['header-right']}>
         <HeaderDropdown />
 
@@ -57,23 +72,6 @@ export default function AppHeader() {
           <Input className="customeInput" placeholder="Type here..." />
           <span>{searchIcon}</span>
         </span>
-      </div>
-
-      <div>
-        <div className={styles['breadcrumb-wrapper']}>
-          <Breadcrumb
-            style={{ direction: 'ltr' }}
-            items={[
-              {
-                title: 'Pages',
-              },
-              {
-                title: <a href={location.pathname}>{pathnameLastPart}</a>,
-              },
-            ]}
-          />
-          <h4>{pathnameLastPart}</h4>
-        </div>
       </div>
     </div>
   );

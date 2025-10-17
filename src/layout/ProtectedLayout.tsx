@@ -22,13 +22,13 @@ export default function AppLayout() {
         </Layout>
       ) : (
         <Layout>
+          <Sidebar />
           <Layout>
             <AppHeader />
             <Content>
               <Outlet />
             </Content>
           </Layout>
-          <Sidebar />
         </Layout>
       )}
     </HeaderPositionProvider>

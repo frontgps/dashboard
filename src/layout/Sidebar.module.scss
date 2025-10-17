@@ -16,7 +16,6 @@ $transition: 220ms ease;
   align-items: stretch;
   height: 100vh;
   overflow: hidden;
-  direction: ltr;
   border-inline-end: 1px solid rgba(255, 255, 255, 0.08);
 
   .menu-scroll {
@@ -50,7 +49,6 @@ $transition: 220ms ease;
 .menu-container {
   background: transparent;
   margin-top: 4px;
-  direction: ltr;
   padding: 0 8px 8px;
 
   :global(.ant-menu) {

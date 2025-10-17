@@ -28,9 +28,9 @@ export default function Sidebar() {
         label: 'Dashboard',
       },
       {
-        key: '/tables',
+        key: '/users',
         icon: <span aria-hidden>{tablesIcon}</span>,
-        label: 'Tables',
+        label: 'Users',
       },
       {
         key: '/billing',
@@ -70,7 +70,7 @@ export default function Sidebar() {
 
   // Highlight the selected menu item based on URL
   const selectedKeys = useMemo(() => {
-    const paths = ['/dashboard', '/tables', '/billing', '/rtl', '/profile', '/signin', '/signup'];
+    const paths = ['/dashboard', '/users', '/billing', '/rtl', '/profile', '/signin', '/signup'];
     const match = paths.find((p) => location.pathname.startsWith(p));
     return match ? [match] : [];
   }, [location.pathname]);
