@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Menu, type MenuProps } from 'antd';
 import Sider from 'antd/es/layout/Sider';
-import { NavLink, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import clsx from 'clsx';
 import styles from '@/layout/Sidebar.module.scss';
 import {
@@ -15,56 +15,32 @@ import {
   tablesIcon,
 } from '@/styles/icons/customeIcons';
 
-const useSidebarItems = (): MenuProps['items'] =>
-  useMemo(
+export default function Sidebar() {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  // Define sidebar items once
+  const items = useMemo<MenuProps['items']>(
     () => [
       {
         key: '/dashboard',
         icon: <span aria-hidden>{dashboardIcon}</span>,
-        label: (
-          <NavLink
-            to="/dashboard"
-            className={({ isActive }) => clsx(styles.link, isActive && styles.active)}
-          >
-            Dashboard
-          </NavLink>
-        ),
+        label: 'Dashboard',
       },
       {
         key: '/tables',
         icon: <span aria-hidden>{tablesIcon}</span>,
-        label: (
-          <NavLink
-            to="/tables"
-            className={({ isActive }) => clsx(styles.link, isActive && styles.active)}
-          >
-            Tables
-          </NavLink>
-        ),
+        label: 'Tables',
       },
       {
         key: '/billing',
         icon: <span aria-hidden>{billingIcon}</span>,
-        label: (
-          <NavLink
-            to="/billing"
-            className={({ isActive }) => clsx(styles.link, isActive && styles.active)}
-          >
-            Billing
-          </NavLink>
-        ),
+        label: 'Billing',
       },
       {
         key: '/rtl',
         icon: <span aria-hidden>{rtlIcon}</span>,
-        label: (
-          <NavLink
-            to="/rtl"
-            className={({ isActive }) => clsx(styles.link, isActive && styles.active)}
-          >
-            RTL
-          </NavLink>
-        ),
+        label: 'RTL',
       },
       {
         type: 'group',
@@ -74,38 +50,17 @@ const useSidebarItems = (): MenuProps['items'] =>
           {
             key: '/profile',
             icon: <span aria-hidden>{profileIcon}</span>,
-            label: (
-              <NavLink
-                to="/profile"
-                className={({ isActive }) => clsx(styles.link, isActive && styles.active)}
-              >
-                Profile
-              </NavLink>
-            ),
+            label: 'Profile',
           },
           {
             key: '/signin',
             icon: <span aria-hidden>{siderSigninIcon}</span>,
-            label: (
-              <NavLink
-                to="/signin"
-                className={({ isActive }) => clsx(styles.link, isActive && styles.active)}
-              >
-                Sign in
-              </NavLink>
-            ),
+            label: 'Sign in',
           },
           {
             key: '/signup',
             icon: <span aria-hidden>{siderSignupIcon}</span>,
-            label: (
-              <NavLink
-                to="/signup"
-                className={({ isActive }) => clsx(styles.link, isActive && styles.active)}
-              >
-                Sign up
-              </NavLink>
-            ),
+            label: 'Sign up',
           },
         ],
       },
@@ -113,23 +68,17 @@ const useSidebarItems = (): MenuProps['items'] =>
     [],
   );
 
-export default function Sidebar() {
-  const location = useLocation();
-  const items = useSidebarItems();
-
+  // Highlight the selected menu item based on URL
   const selectedKeys = useMemo(() => {
-    const candidates = [
-      '/dashboard',
-      '/tables',
-      '/billing',
-      '/rtl',
-      '/profile',
-      '/signin',
-      '/signup',
-    ];
-    const match = candidates.find((p) => location.pathname.startsWith(p));
+    const paths = ['/dashboard', '/tables', '/billing', '/rtl', '/profile', '/signin', '/signup'];
+    const match = paths.find((p) => location.pathname.startsWith(p));
     return match ? [match] : [];
   }, [location.pathname]);
+
+  // Navigate on menu click
+  const handleClick: MenuProps['onClick'] = (e) => {
+    navigate(e.key);
+  };
 
   return (
     <Sider
@@ -155,6 +104,7 @@ export default function Sidebar() {
           selectedKeys={selectedKeys}
           mode="inline"
           inlineIndent={16}
+          onClick={handleClick}
         />
       </div>
 
@@ -163,11 +113,13 @@ export default function Sidebar() {
           <span aria-hidden>{documentationIcon}</span>
           <h6>Need help?</h6>
           <p>Please check our docs</p>
-          <NavLink to="/docs" aria-label="Open Documentation">
-            <button style={{ padding: 12 }} type="button">
-              Documentation
-            </button>
-          </NavLink>
+          <button
+            type="button"
+            style={{ padding: 12, width: '100%' }}
+            onClick={() => navigate('/docs')}
+          >
+            Documentation
+          </button>
         </div>
       </div>
     </Sider>
