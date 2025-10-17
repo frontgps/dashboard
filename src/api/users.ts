@@ -5,7 +5,6 @@ import type { PaginatedResponse } from '@/types/global';
 const COLLECTION = 'po_users';
 const ENDPOINT = `${BASE_URL}api/collections/${COLLECTION}/records`;
 
-// ---------- Types ----------
 export interface User {
   id: string;
   username: string;
@@ -14,17 +13,23 @@ export interface User {
   avatar: string;
 }
 
-// ---------- CRUD Operations ----------
+function buildFilter(filters: Partial<User>) {
+  const parts: string[] = [];
+  if (filters.id) parts.push(`id ~ "${filters.id}"`);
+  if (filters.username) parts.push(`username ~ "${filters.username}"`);
+  if (filters.email) parts.push(`email ~ "${filters.email}"`);
+  return parts.join(' && ');
+}
 
-// READ: paginated list
-export async function getUsers(page = 1, perPage = 10) {
-  const res = await requestInstance.get<PaginatedResponse<User>>(ENDPOINT, {
-    params: { page, perPage, sort: '-created' },
-  });
+export async function getUsers(page = 1, perPage = 10, filters?: Partial<User>) {
+  const params: Record<string, any> = { page, perPage, sort: '-created' };
+  const filterStr = buildFilter(filters || {});
+  if (filterStr) params.filter = filterStr;
+
+  const res = await requestInstance.get<PaginatedResponse<User>>(ENDPOINT, { params });
   return res.data;
 }
 
-// READ: single User
 export async function getUser(id: string) {
   const res = await requestInstance.get<User>(`${ENDPOINT}/${id}`);
   return res.data;
