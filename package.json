@@ -11,7 +11,7 @@
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
     "lint:fix": "eslint --fix \"src/**/*.{js,jsx,ts,tsx}\"",
     "format": "prettier --write \"src/**/*.{js,jsx,ts,tsx,json,css,md}\"",
-    "test": "echo \"No tests specified\" && exit 0"
+    "test": "vitest"
   },
   "dependencies": {
     "@ant-design/icons": "^6.0.2",
@@ -28,6 +28,9 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@testing-library/user-event": "^14.6.1",
     "@types/antd": "^1.0.4",
     "@types/node": "^24.5.2",
     "@types/react": "^19.1.13",
@@ -43,11 +46,14 @@
     "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.2.0",
     "husky": "^8.0.0",
+    "jsdom": "^27.0.1",
     "lint-staged": "^16.2.1",
+    "msw": "^2.11.6",
     "prettier": "^3.6.2",
     "sass": "^1.93.2",
     "typescript": "~5.8.3",
-    "vite": "^7.1.7"
+    "vite": "^7.1.7",
+    "vitest": "^3.2.4"
   },
   "lint-staged": {
     "src/**/*.{js,jsx,ts,tsx}": [
