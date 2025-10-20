@@ -189,7 +189,7 @@ export default function ProjectsList() {
   };
 
   return (
-    <Card className="c-ant-card-project">
+    <Card className={'c-ant-card-project'}>
       <div className={styles.header}>
         <div className={styles.title}>
           <Title level={5}>Projects</Title>
@@ -199,9 +199,9 @@ export default function ProjectsList() {
         </div>
         <div>
           <Group onChange={onChange} value={selectedValue} className={`${styles.navItem}`}>
-            <Radio.Button value="c">STORES</Radio.Button>
-            <Radio.Button value="b">ONLINE</Radio.Button>
             <Radio.Button value="a">ALL</Radio.Button>
+            <Radio.Button value="b">ONLINE</Radio.Button>
+            <Radio.Button value="c">STORES</Radio.Button>
           </Group>
         </div>
       </div>
