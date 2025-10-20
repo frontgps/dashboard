@@ -43,7 +43,9 @@ export function SignInForm() {
   return (
     <div className="login-form-wrapper">
       <h2 className="login-title">Sign In</h2>
-      <Text className="login-subtitle">Enter your email and password to sign in</Text>
+      <Text className="login-subtitle">
+        Enter your email and password to sign in (username : testi@gmail.com , password : 123456789)
+      </Text>
 
       <Form<LoginFormValues>
         layout="vertical"
