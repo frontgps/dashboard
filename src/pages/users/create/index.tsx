@@ -18,15 +18,23 @@ export default function CreateUserModal({ open, onClose, onSuccess }: CreateUser
       form.resetFields();
       onSuccess();
     },
-    onError: () => {
+    onError: (error: any) => {
+      console.error('Create user error:', error);
       message.error('Failed to create user');
+      const serverMessage =
+        error?.response?.data?.message ||
+        (error?.response?.data?.data && JSON.stringify(error.response.data.data)) ||
+        'Failed to create user';
+      message.error(serverMessage);
     },
   });
 
   const handleSubmit = async () => {
     try {
       const values = await form.validateFields();
-      mutate(values);
+      const payload = { ...values, emailVisibility: true };
+
+      mutate(payload);
     } catch {
       // validation failed
     }
@@ -52,7 +60,7 @@ export default function CreateUserModal({ open, onClose, onSuccess }: CreateUser
           label="Username"
           rules={[{ required: true, message: 'Please enter username' }]}
         >
-          <Input placeholder="Enter username" />
+          <Input placeholder="Enter username" autoComplete="off" />
         </Form.Item>
 
         <Form.Item
@@ -63,15 +71,49 @@ export default function CreateUserModal({ open, onClose, onSuccess }: CreateUser
             { type: 'email', message: 'Invalid email format' },
           ]}
         >
-          <Input placeholder="Enter email" />
+          <Input placeholder="Enter email" autoComplete="off" />
         </Form.Item>
 
         <Form.Item
           name="password"
           label="Password"
-          rules={[{ required: true, message: 'Please enter password' }]}
+          rules={[
+            { required: true, message: 'Please enter password' },
+            { min: 8, message: 'Password must be at least 8 characters' },
+            {
+              pattern: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d@$!%*?&]{8,}$/,
+              message: 'Password must contain letters and numbers',
+            },
+          ]}
         >
-          <Input.Password placeholder="Enter password" />
+          <Input.Password placeholder="Enter password" autoComplete="new-password" />
+        </Form.Item>
+
+        <Form.Item
+          name="passwordConfirm"
+          label="Confirm Password"
+          dependencies={['password']}
+          rules={[
+            { required: true, message: 'Please confirm password' },
+            ({ getFieldValue }) => ({
+              validator(_, value) {
+                if (!value || getFieldValue('password') === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(new Error('The two passwords do not match'));
+              },
+            }),
+          ]}
+        >
+          <Input.Password placeholder="Confirm password" />
+        </Form.Item>
+
+        <Form.Item
+          name="description"
+          label="Description"
+          rules={[{ required: false, message: 'Please enter description' }]}
+        >
+          <Input.TextArea placeholder="Optional description..." rows={3} />
         </Form.Item>
       </Form>
     </Modal>

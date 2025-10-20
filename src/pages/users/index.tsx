@@ -1,17 +1,30 @@
-import { useState, useMemo } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { Table, Typography, Space, Button, Popconfirm, message, Input, Row, Col } from 'antd';
 import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
-import { getUsers, deleteUser, type User } from '@/api/users';
+import { getUsers, getUser, deleteUser, type User } from '@/api/users';
 import CreateUserModal from './create';
+import EditUserModal from './edit';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const { Title } = Typography;
 
 export default function Users() {
   const queryClient = useQueryClient();
 
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const editId = location.pathname.startsWith('/users/edit/')
+    ? location.pathname.replace('/users/edit/', '')
+    : null;
+
   // Pagination state
   const [page, setPage] = useState(1);
   const [pageSize, setPageSize] = useState(10);
+
+  // edit modal state
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const [editingUser, setEditingUser] = useState<User | null>(null);
 
   // Filters state
   const [filters, setFilters] = useState({
@@ -22,6 +35,9 @@ export default function Users() {
 
   // Modal state
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  // Enhanced users state (for email/description fetch)
+  const [enhancedUsers, setEnhancedUsers] = useState<User[]>([]);
 
   // Fetch users with filters
   const { data, isLoading, isError, refetch } = useQuery({
@@ -40,11 +56,39 @@ export default function Users() {
     onError: () => message.error('Failed to delete user'),
   });
 
+  useEffect(() => {
+    if (data?.items) {
+      const fetchDetails = async () => {
+        const detailed = await Promise.all(
+          data.items.map(async (user) => {
+            if (!user.email || !user.description) {
+              try {
+                const fullUser = await getUser(user.id);
+                return { ...user, email: fullUser.email, description: fullUser.description };
+              } catch {
+                return user;
+              }
+            }
+            return user;
+          }),
+        );
+        setEnhancedUsers(detailed);
+      };
+      fetchDetails();
+    }
+  }, [data]);
+
   const columns = useMemo(
     () => [
       { title: 'ID', dataIndex: 'id', key: 'id', width: 120 },
       { title: 'Username', dataIndex: 'username', key: 'username' },
       { title: 'Email', dataIndex: 'email', key: 'email' },
+      {
+        title: 'Description',
+        dataIndex: 'description',
+        key: 'description',
+        render: (text) => text || '-',
+      },
       {
         title: 'Created',
         dataIndex: 'created',
@@ -56,6 +100,19 @@ export default function Users() {
         key: 'action',
         render: (_: any, record: User) => (
           <Space>
+            <Button
+              type="default"
+              size="small"
+              style={{ color: '#1677ff', borderColor: '#1677ff' }}
+              onClick={() => {
+                setEditingUser(record);
+                setIsEditOpen(true);
+                navigate(`/users/edit/${record.id}`, { replace: false });
+              }}
+            >
+              Edit
+            </Button>
+
             <Popconfirm
               title="Delete user?"
               onConfirm={() => mutateDelete(record.id)}
@@ -140,7 +197,8 @@ export default function Users() {
       <Table
         loading={isLoading}
         columns={columns}
-        dataSource={data?.items || []}
+        // dataSource={data?.items || []}
+        dataSource={enhancedUsers}
         rowKey="id"
         pagination={{
           current: page,
@@ -156,6 +214,23 @@ export default function Users() {
       />
 
       {isError && <p style={{ color: 'red' }}>Failed to load users.</p>}
+
+      {/* edit Modal */}
+      <EditUserModal
+        open={isEditOpen}
+        userData={editingUser}
+        onClose={() => {
+          setIsEditOpen(false);
+          setEditingUser(null);
+          navigate('/users');
+        }}
+        onSuccess={() => {
+          setIsEditOpen(false);
+          setEditingUser(null);
+          queryClient.invalidateQueries({ queryKey: ['users'] });
+          navigate('/users');
+        }}
+      />
 
       {/* Create Modal */}
       <CreateUserModal
