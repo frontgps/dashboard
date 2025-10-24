@@ -14,6 +14,7 @@ const ProtectedLayout = lazy(() => import('@/layout/ProtectedLayout'));
 const HomePage = lazy(() => import('@/pages/Dashboard'));
 const LoginPage = lazy(() => import('@/pages/Login'));
 const UsersPage = lazy(() => import('@/pages/users'));
+const NotFoundPage = lazy(() => import('@/pages/NotFound'));
 // const CreateUserModal = lazy(() => import('@/pages/users/create'));
 
 export const router = createBrowserRouter([
@@ -54,6 +55,10 @@ export const router = createBrowserRouter([
   {
     path: '/login',
     element: withSuspense(<LoginPage />),
+  },
+  {
+    path: '*',
+    element: withSuspense(<NotFoundPage />),
   },
 
   // PLOP_INJECT_ROUTES
