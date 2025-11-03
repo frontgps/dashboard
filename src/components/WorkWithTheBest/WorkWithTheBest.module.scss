@@ -1,6 +1,8 @@
 .wrapper {
-  height: 200px;
-  padding: 0;
+  :global(.ant-card-body) {
+    padding: 12px;
+  }
+  height: fit-content;
   margin: 0;
   border-radius: 12px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);

@@ -52,7 +52,7 @@ export default function OrdersHistory() {
         this month <span className={styles.green}>20%</span>
       </Paragraph>
 
-      <Timeline mode="right" pending="Recording..." reverse={reverse}>
+      <Timeline mode="left" pending="Recording..." reverse={reverse}>
         {timelineList.map((t, index) => (
           <Timeline.Item color={t.color} key={index}>
             <Title level={5} style={{ margin: 0, fontSize: '14px' }}>

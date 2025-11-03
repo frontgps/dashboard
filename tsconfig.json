@@ -17,7 +17,7 @@
     "paths": {
       "@/*": ["./src/*"]
     },
-    "types": ["node", "vite/client"],
+    "types": ["vitest/globals", "vite/client", "@testing-library/jest-dom", "node"],
     "verbatimModuleSyntax": true,
     "moduleDetection": "auto",
     "noUnusedLocals": false,
@@ -28,5 +28,5 @@
     // "erasableSyntaxOnly": false,
     // "noUncheckedSideEffectImports": true
   },
-  "include": ["src", "vite.config.ts"]
+  "include": ["src", "vite.config.ts", "src/routes/Router.tsx"]
 }

@@ -5,7 +5,7 @@ import { RightOutlined } from '@ant-design/icons';
 export default function BuiltByDevelopers() {
   return (
     <ConfigProvider direction="ltr">
-      <Card className={styles.builtByDevelopers}>
+      <Card className={`c-ant-card-body ${styles.builtByDevelopers}`}>
         <Row align="middle" gutter={[16, 16]}>
           <Col md={14}>
             <Typography.Text type="secondary">Built by developers</Typography.Text>

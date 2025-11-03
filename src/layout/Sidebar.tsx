@@ -2,7 +2,6 @@ import { useMemo } from 'react';
 import { Menu, type MenuProps } from 'antd';
 import Sider from 'antd/es/layout/Sider';
 import { useNavigate, useLocation } from 'react-router-dom';
-import clsx from 'clsx';
 import styles from '@/layout/Sidebar.module.scss';
 import {
   billingIcon,
